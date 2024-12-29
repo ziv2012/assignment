@@ -44,18 +44,16 @@ OPENAI_API_KEY=your_api_key_here
 ```
 detection_service/
 ├── app/
-│   ├── __init__.py
-│   ├── main.py
 │   ├── models/
-│   │   ├── __init__.py
 │   │   └── schemas.py
 │   ├── services/
-│   │   ├── __init__.py
 │   │   ├── detector.py
+│   │   ├── logger.py
 │   │   └── openai_service.py
 │   └── routers/
-│       ├── __init__.py
 │       └── api.py
+│── main.py
+│── .env
 └── requirements.txt
 ```
 
