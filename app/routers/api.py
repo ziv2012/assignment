@@ -13,12 +13,13 @@ async def detect_endpoint(request: DetectionRequest):
     start_time = time.time()
     
     if not request.prompt:
+        audit_logger.log_request("/detect", request.prompt, request.settings, [], 0, False, "Prompt cannot be empty")
         raise HTTPException(status_code=400, detail="Prompt cannot be empty")
     
     detected = await TopicDetector.detect_topics(request.prompt, request.settings, fast_mode=False)
     
     processing_time = time.time() - start_time
-    audit_logger.log_request("/detect", request.prompt, request.settings, detected, processing_time)
+    audit_logger.log_request("/detect", request.prompt, request.settings, detected, processing_time, True, "")
     
     return DetectionResponse(detected_topics=detected)
 
@@ -27,12 +28,13 @@ async def protect_endpoint(request: DetectionRequest):
     start_time = time.time()
     
     if not request.prompt:
+        audit_logger.log_request("/detect", request.prompt, request.settings, [], 0, False, "Prompt cannot be empty")
         raise HTTPException(status_code=400, detail="Prompt cannot be empty")
     
     detected = await TopicDetector.detect_topics(request.prompt, request.settings, fast_mode=True)
     
     processing_time = time.time() - start_time
-    audit_logger.log_request("/protect", request.prompt, request.settings, detected, processing_time)
+    audit_logger.log_request("/protect", request.prompt, request.settings, detected, processing_time, True, "")
     
     return DetectionResponse(detected_topics=detected)
 

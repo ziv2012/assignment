@@ -104,6 +104,7 @@ class OpenAIService:
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0,
+                max_tokens=50,
                 response_format={ "type": "json_object" }
             )
             

@@ -7,7 +7,7 @@ class AuditLogger:
         self.logs = []
 
     def log_request(self, endpoint: str, prompt: str, settings: Dict[str, bool], 
-                   result: List[str], processing_time: float):
+                   result: List[str], processing_time: float, is_successful: bool, error_message: str):
         """Log the request detils"""
         log_entry = LogEntry(
             timestamp=datetime.now(),
@@ -15,7 +15,9 @@ class AuditLogger:
             prompt=prompt,
             settings=settings,
             result=result,
-            processing_time=processing_time
+            processing_time=processing_time,
+            is_successful=is_successful,
+            error_message=error_message
         )
         self.logs.append(log_entry)
 

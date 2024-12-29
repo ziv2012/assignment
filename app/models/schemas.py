@@ -16,3 +16,5 @@ class LogEntry(BaseModel):
     settings: Dict[str, bool]
     result: List[str]
     processing_time: float
+    is_successful: bool
+    error_message: str
