@@ -10,11 +10,6 @@ A FastAPI-based service designed to analyze and detect specific topics in text p
 - Request logging and auditing
 - Asynchronous processing for better performance
 
-## Prerequisites
-
-- Python 3.8+
-- OpenAI API key
-
 ## Installation
 
 1. Clone the repository:
